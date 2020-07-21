@@ -8,6 +8,8 @@ namespace DataAccess.Repository.IRepository
     {
         IUserRepository Users { get; }
 
+        IConversationRepository Conversations { get; }
+
         void Save();
     }
 }

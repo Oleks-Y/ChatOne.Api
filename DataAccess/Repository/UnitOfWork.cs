@@ -11,10 +11,13 @@ namespace DataAccess.Repository
         private readonly ApplicationDbContext _db;
         public IUserRepository Users { get; private set; }
 
+        public IConversationRepository Conversations { get; private set; }
+
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Users = new UserRepository(_db);
+            Conversations = new ConversationRepository(_db);
         }
         public void Dispose()
         {

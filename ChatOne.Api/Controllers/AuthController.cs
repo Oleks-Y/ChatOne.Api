@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using PusherServer;
 
 namespace ChatOne.Api.Controllers
 {
@@ -32,5 +33,23 @@ namespace ChatOne.Api.Controllers
             return Json(user);
         }
 
+        public IActionResult AuthForChannel(int currUserId ,string channel_name, string socket_id)
+        {
+            var user = _unitOfWork.Users.Get(currUserId);
+
+            var options = new PusherOptions();
+            options.Cluster = "eu";
+            var pusher = new Pusher(
+                "1041895",
+                "0a54a9ffa32985979dd5",
+                "ff562a59173102085807",
+                options
+                );
+
+            var auth = pusher.Authenticate(channel_name, socket_id);
+            return Json(auth);
+
+        }
+
     }
-}
+} 

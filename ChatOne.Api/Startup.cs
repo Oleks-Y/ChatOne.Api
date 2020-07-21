@@ -63,7 +63,7 @@ namespace ChatOne.Api
             });
 
             app.UseHttpsRedirection();
-            app.UseCors(builder => builder.AllowAnyOrigin());
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseRouting();
             app.UseDefaultFiles();
             app.UseStaticFiles();

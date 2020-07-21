@@ -7,7 +7,7 @@ using Models;
 
 namespace DataAccess.Data
 {
-    public class ApplicationDbContext : DbContext 
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -15,5 +15,7 @@ namespace DataAccess.Data
         }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Conversation> Conversations{get;set;}
     }
 }
